@@ -50,12 +50,7 @@ const updateBook = async (req, res) => {
       { where: { title: req.body.title } }
     );
 
-    res
-      .status(201)
-      .json({
-        message: "successfully searched and updated",
-        updateBook: updateBook,
-      }); 
+    res.status(201).json({ message: "successfully searched and updated", updateBook: updateBook }); 
   } catch (error) {
     res.status(501).json({ message: error.message, error: error });
   }
@@ -70,9 +65,7 @@ const deleteBook = async (req, res) => {
       where: { title: req.body.title },
     }); 
       console.log("deleteBook",deleteBook);
-    res
-      .status(201)
-      .json({ message: "successfully deleted", deleteBook: deleteBook }); 
+    res.status(201).json({ message: "successfully deleted", deleteBook: deleteBook }); 
   } catch (error) {
     res.status(501).json({ message: error.message, error: error });
   }
@@ -86,9 +79,7 @@ const deleteAllBooks = async (req, res) => {
       truncate: true,
     }); 
       console.log("deleteBook",deleteBook);
-    res
-      .status(201)
-      .json({ message: "successfully deleted", deleteAllBooks: deleteAllBooks }); 
+    res.status(201).json({ message: "successfully deleted", deleteAllBooks: deleteAllBooks }); 
   } catch (error) {
     res.status(501).json({ message: error.message, error: error });
   }
