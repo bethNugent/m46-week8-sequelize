@@ -18,8 +18,6 @@ bookRouter.delete("/books/deletebook", deleteBook);
 bookRouter.delete("/books/deleteallbooks", deleteAllBooks);
 
 
-// bookRouter.get("/books/getallbooks")
-
 
 
 module.exports = bookRouter;

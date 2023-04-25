@@ -27,8 +27,6 @@ const syncTables = () => {
     Author.sync();
     Genre.sync();
 }
-//alter: true - make a change to the model in my code it will sync it up and allow the table to be changed. e.g. field called book rating
-
 
 
 app.use(bookRouter);

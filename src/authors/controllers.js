@@ -6,42 +6,28 @@ const addAuthor = async (req, res) => {
         const addAuthor = await Author.create({
             authorName: req.body.authorName,
         });
+
         res.status(201).json({message: "success", addAuthor: addAuthor })
     } catch (error) {
-        console.log(error);
+    res.status(501).json({ message: error.message, error: error });
     }
 };
-
-
-
 
 
 const getAuthorAndBooks = async (req, res) => {
     try {
-
         // console.log(req);
-
         const author = await Author.findOne({ 
             where: { authorname: req.params.authorname }, 
             include: Book,
         });
-    
-        // Could do this - but it is clunky and has no relationship
-        // const books = await Book.findAll({ 
-        //     where: {author: req.params.authorname },
-        // });
 
         res.status(201).json({message: "success", author: author })
     } catch (error) {
-        console.log(error);
+        res.status(501).json({ message: error.message, error: error });
     }
 };
 
-//in json
-// localhost:5001/authors/getauthorandbooks/beth
-//   {
-//     "authorName": "beth"
-//   }
 
 
 module.exports = {
@@ -49,3 +35,18 @@ module.exports = {
     getAuthorAndBooks,
   };
   
+
+
+
+
+
+
+
+
+
+
+  //in json
+// localhost:5001/authors/getauthorandbooks/beth
+//   {
+//     "authorName": "beth"
+//   }

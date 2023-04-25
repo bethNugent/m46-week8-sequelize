@@ -9,7 +9,7 @@ const addGenre = async (req, res) => {
         });
         res.status(201).json({message: "success", addGenre: addGenre })
     } catch (error) {
-        console.log(error);
+        res.status(501).json({ message: error.message, error: error });
     }
 };
 
@@ -23,23 +23,13 @@ const getAllBooks = async (req, res) => {
             where: { genre: req.params.genre }, 
             include: Book,
         });
-
-        //could do this but it is clunky and has no relationship
-        // const books = await Book.findAll({ 
-        //     where: {genre: req.params.genre }
-        // });
     
         res.status(201).json({message: "success", getAllBooks: getAllBooks })
     } catch (error) {
-        console.log(error);
+        res.status(501).json({ message: error.message, error: error });
     }
 };
 
-//in json
-// localhost:5001/authors/getauthorandbooks/beth
-//   {
-//     "authorName": "beth"
-//   }
 
 
 
@@ -47,4 +37,3 @@ module.exports = {
     addGenre, 
     getAllBooks,
   };
-  
